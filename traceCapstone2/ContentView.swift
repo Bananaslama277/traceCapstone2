@@ -37,6 +37,7 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
+            
             VStack{
                 
                 Text("Super Cool Awesome Measurement Converter")
@@ -47,6 +48,8 @@ struct ContentView: View {
                     .padding(.top)
                 
                 Form {
+                    
+                    
                     Section(header: Text("Measurement to convert")) {
                         Picker("Measurement", selection: $selectedMeasurement) {
                             ForEach(0 ..< measurements.count) {
@@ -56,10 +59,14 @@ struct ContentView: View {
                         .pickerStyle(SegmentedPickerStyle())
                     }
                     
+                    
                     Section(header: Text("Quantity")) {
                         TextField("Enter quantity", text: $quantityString)
                             .keyboardType(.decimalPad)
+                            .foregroundColor(Color.black)
+                            .fontWeight(.semibold)
                     }
+                    
                     
                     Section(header: Text("Converted value")) {
                         HStack {
@@ -68,12 +75,15 @@ struct ContentView: View {
                                 ForEach(0 ..< units.count) {
                                     Text(self.units[$0])
                                 }
-                            }
-                            .pickerStyle(SegmentedPickerStyle())
-                        }   .foregroundColor(Color.black)
-                            .fontWeight(.semibold)
+                                
+                                
+                            }.pickerStyle(SegmentedPickerStyle())
+                            
+                        }.foregroundColor(Color.black)
+                         .fontWeight(.semibold)
                     }
-                }.scrollContentBackground(.hidden)
+                    
+                }   .scrollContentBackground(.hidden)
                     .foregroundColor(Color.white)
                     .font(.headline)
                     .fontWeight(.heavy)
@@ -83,11 +93,11 @@ struct ContentView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding([.top, .leading, .trailing])
-            }
-            .background(Color.cyan)
+            }.background(Color.cyan)
         }
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
