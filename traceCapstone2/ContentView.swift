@@ -80,19 +80,22 @@ struct ContentView: View {
                             }.pickerStyle(SegmentedPickerStyle())
                             
                         }.foregroundColor(Color.black)
-                         .fontWeight(.semibold)
+                            .fontWeight(.semibold)
                     }
                     
                 }   .scrollContentBackground(.hidden)
                     .foregroundColor(Color.white)
                     .font(.headline)
                     .fontWeight(.heavy)
-
+                
                 Image("Image")
                     .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding([.top, .leading, .trailing])
+                    
+                    }
+
             }.background(Color.cyan)
         }
     }
