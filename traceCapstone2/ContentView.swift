@@ -94,12 +94,13 @@ struct ContentView: View {
                     .aspectRatio(contentMode: .fit)
                     .padding([.top, .leading, .trailing])
                     
-                    }
+                    }.background(Color.cyan)
 
-            }.background(Color.cyan)
+            }
+        
         }
     }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
