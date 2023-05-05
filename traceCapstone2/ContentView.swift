@@ -37,35 +37,41 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            Form {
-                Section(header: Text("Measurement to convert")) {
-                    Picker("Measurement", selection: $selectedMeasurement) {
-                        ForEach(0 ..< measurements.count) {
-                            Text(self.measurements[$0])
-                        }
-                    }
-                    .pickerStyle(SegmentedPickerStyle())
-                }
-
-                Section(header: Text("Quantity")) {
-                    TextField("Enter quantity", text: $quantityString)
-                        .keyboardType(.decimalPad)
-                }
-
-                Section(header: Text("Converted value")) {
-                    HStack {
-                        Text("\(convertedMeasurement, specifier: "%.2f")")
-                        Picker("Unit", selection: $selectedUnit) {
-                            ForEach(0 ..< units.count) {
-                                Text(self.units[$0])
+            VStack{
+                Form {
+                    Section(header: Text("Measurement to convert")) {
+                        Picker("Measurement", selection: $selectedMeasurement) {
+                            ForEach(0 ..< measurements.count) {
+                                Text(self.measurements[$0])
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
                     }
+                    
+                    Section(header: Text("Quantity")) {
+                        TextField("Enter quantity", text: $quantityString)
+                            .keyboardType(.decimalPad)
+                    }
+                    
+                    Section(header: Text("Converted value")) {
+                        HStack {
+                            Text("\(convertedMeasurement, specifier: "%.2f")")
+                            Picker("Unit", selection: $selectedUnit) {
+                                ForEach(0 ..< units.count) {
+                                    Text(self.units[$0])
+                                }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
+                    }
                 }
+                Image("Image")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.all)
+                
+                .navigationTitle("Measurement Converter")
             }
-            .padding()
-            .navigationTitle("Measurement Converter")
         }
     }
 }
