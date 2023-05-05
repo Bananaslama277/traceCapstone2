@@ -38,6 +38,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack{
+                
+                Text("Super Cool Awesome Measurement Converter")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .multilineTextAlignment(.center)
+                    .padding(.top)
+                
                 Form {
                     Section(header: Text("Measurement to convert")) {
                         Picker("Measurement", selection: $selectedMeasurement) {
@@ -62,16 +70,21 @@ struct ContentView: View {
                                 }
                             }
                             .pickerStyle(SegmentedPickerStyle())
-                        }
+                        }   .foregroundColor(Color.black)
+                            .fontWeight(.semibold)
                     }
-                }
+                }.scrollContentBackground(.hidden)
+                    .foregroundColor(Color.white)
+                    .font(.headline)
+                    .fontWeight(.heavy)
+
                 Image("Image")
+                    .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding(.all)
-                
-                .navigationTitle("Measurement Converter")
+                    .padding([.top, .leading, .trailing])
             }
+            .background(Color.cyan)
         }
     }
 }
