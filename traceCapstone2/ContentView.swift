@@ -101,15 +101,7 @@ struct ContentView: View {
                         .rotationEffect(.degrees(angle))
                         .animation(.easeIn, value: angle)
                     }
-
-
-               /* Image("Image")
-                    .renderingMode(.original)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding([.top, .leading, .trailing])
-                    */
-                    }
+                }
 
             }
         
