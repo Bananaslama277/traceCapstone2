@@ -57,7 +57,7 @@ struct ContentView: View {
                     Text("Super Cool Awesome Measurement Converter")
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(CustomColor.lime)
                         .multilineTextAlignment(.center)
                         .padding(.top)
                     
@@ -71,7 +71,8 @@ struct ContentView: View {
                                 }
                             }
                             .pickerStyle(SegmentedPickerStyle())
-                        }
+                        }                            .foregroundColor(CustomColor.lime)
+
                         
                         
                         Section(header: Text("Quantity")) {
@@ -79,26 +80,29 @@ struct ContentView: View {
                                 .keyboardType(.decimalPad)
                                 .foregroundColor(Color.black)
                                 .fontWeight(.semibold)
-                        }
+                        }                            .foregroundColor(CustomColor.lime)
+
                         
                         
-                        Section(header: Text("Converted value")) {
+                        Section(header: Text("Converted value")
+                            .foregroundColor(CustomColor.lime)){
                             HStack {
                                 Text("\(convertedMeasurement, specifier: "%.2f")")
                                 Picker("Unit", selection: $selectedUnit) {
                                     ForEach(0 ..< units.count) {
                                         Text(self.units[$0])
                                     }
+
                                     
                                     
                                 }.pickerStyle(SegmentedPickerStyle())
                                 
-                            }.foregroundColor(Color.black)
+                                
+                            }.foregroundColor(CustomColor.brightRed)
                                 .fontWeight(.semibold)
                         }
                         
                     }   .scrollContentBackground(.hidden)
-                        .foregroundColor(Color.white)
                         .font(.headline)
                         .fontWeight(.heavy)
                     
