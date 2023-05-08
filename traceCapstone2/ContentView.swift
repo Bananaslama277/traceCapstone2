@@ -49,7 +49,7 @@ struct ContentView: View {
             ZStack{
                 Rectangle()
                     .fill(Gradient(colors: [CustomColor.brightRed, CustomColor.darkBrown, CustomColor.lime]))
-                            .ignoresSafeArea()
+                        .ignoresSafeArea()
 
 
                 VStack{
@@ -108,9 +108,9 @@ struct ContentView: View {
                     }) { Image ("Image")
                             
                     }
-                    .padding(.vertical)
+                    .frame(width: 128.0, height: 128.8)
                     .rotationEffect(.degrees(angle))
-                    .animation(.easeInOut, value: angle)
+                    .animation(.linear, value: angle)
                 }
             }
             
