@@ -7,6 +7,9 @@ struct ContentView: View {
     let measurements = ["Feet", "Inches", "Miles", "Yards"]
     let units = ["Meters", "Centimeters", "Kilometers"]
 
+    @State private var angle = 0.0
+    @State private var borderThickness = 1.0
+
     var convertedMeasurement: Double {
         let quantity = Double(quantityString) ?? 0.0
         var convertedValue: Double = 0.0
@@ -88,18 +91,29 @@ struct ContentView: View {
                     .font(.headline)
                     .fontWeight(.heavy)
                 
-                Image("Image")
+                Button(action: {
+                            angle += 360
+                            borderThickness += 1
+                }) { Image ("Image")
+                }
+                .padding(.bottom)
+                        .border(.red, width: borderThickness)
+                        .rotationEffect(.degrees(angle))
+                        .animation(.easeIn, value: angle)
+                    }
+
+
+               /* Image("Image")
                     .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding([.top, .leading, .trailing])
-                    
-                    }.background(Color.cyan)
+                    */
+                    }
 
             }
         
         }
-    }
 
 
 struct ContentView_Previews: PreviewProvider {
