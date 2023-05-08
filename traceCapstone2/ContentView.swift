@@ -6,10 +6,10 @@ struct ContentView: View {
     @State private var quantityString = ""
     let measurements = ["Feet", "Inches", "Miles", "Yards"]
     let units = ["Meters", "Centimeters", "Kilometers"]
-
+    
     @State private var angle = 0.0
     @State private var borderThickness = 1.0
-
+    
     var convertedMeasurement: Double {
         let quantity = Double(quantityString) ?? 0.0
         var convertedValue: Double = 0.0
@@ -37,76 +37,82 @@ struct ContentView: View {
         }
         return convertedValue
     }
-
+    
     var body: some View {
         NavigationView {
-            
-            VStack{
-                
-                Text("Super Cool Awesome Measurement Converter")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.top)
-                
-                Form {
+            ZStack{
+                Rectangle()
+                            .fill(Gradient(colors: [.indigo, .purple]))
+                            .ignoresSafeArea()
+
+
+                VStack{
                     
+                    Text("Super Cool Awesome Measurement Converter")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .multilineTextAlignment(.center)
+                        .padding(.top)
                     
-                    Section(header: Text("Measurement to convert")) {
-                        Picker("Measurement", selection: $selectedMeasurement) {
-                            ForEach(0 ..< measurements.count) {
-                                Text(self.measurements[$0])
-                            }
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
-                    }
-                    
-                    
-                    Section(header: Text("Quantity")) {
-                        TextField("Enter quantity", text: $quantityString)
-                            .keyboardType(.decimalPad)
-                            .foregroundColor(Color.black)
-                            .fontWeight(.semibold)
-                    }
-                    
-                    
-                    Section(header: Text("Converted value")) {
-                        HStack {
-                            Text("\(convertedMeasurement, specifier: "%.2f")")
-                            Picker("Unit", selection: $selectedUnit) {
-                                ForEach(0 ..< units.count) {
-                                    Text(self.units[$0])
+                    Form {
+                        
+                        
+                        Section(header: Text("Measurement to convert")) {
+                            Picker("Measurement", selection: $selectedMeasurement) {
+                                ForEach(0 ..< measurements.count) {
+                                    Text(self.measurements[$0])
                                 }
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
+                        
+                        
+                        Section(header: Text("Quantity")) {
+                            TextField("Enter quantity", text: $quantityString)
+                                .keyboardType(.decimalPad)
+                                .foregroundColor(Color.black)
+                                .fontWeight(.semibold)
+                        }
+                        
+                        
+                        Section(header: Text("Converted value")) {
+                            HStack {
+                                Text("\(convertedMeasurement, specifier: "%.2f")")
+                                Picker("Unit", selection: $selectedUnit) {
+                                    ForEach(0 ..< units.count) {
+                                        Text(self.units[$0])
+                                    }
+                                    
+                                    
+                                }.pickerStyle(SegmentedPickerStyle())
                                 
-                                
-                            }.pickerStyle(SegmentedPickerStyle())
-                            
-                        }.foregroundColor(Color.black)
-                            .fontWeight(.semibold)
-                    }
+                            }.foregroundColor(Color.black)
+                                .fontWeight(.semibold)
+                        }
+                        
+                    }   .scrollContentBackground(.hidden)
+                        .foregroundColor(Color.white)
+                        .font(.headline)
+                        .fontWeight(.heavy)
                     
-                }   .scrollContentBackground(.hidden)
-                    .foregroundColor(Color.white)
-                    .font(.headline)
-                    .fontWeight(.heavy)
-                
-                Button(action: {
-                            angle += 360
-                            borderThickness += 1
-                }) { Image ("Image")
-                }
-                .padding(.bottom)
-                        .border(.red, width: borderThickness)
-                        .rotationEffect(.degrees(angle))
-                        .animation(.easeIn, value: angle)
+                    Button(action: {
+                        angle += 360
+                        borderThickness += 1
+                    }) { Image ("Image")
+                            
                     }
+                    .padding(.vertical)
+                    .border(.red, width: borderThickness)
+                    .rotationEffect(.degrees(angle))
+                    .animation(.easeInOut, value: angle)
                 }
-
             }
-        
+            
         }
-
+        
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
