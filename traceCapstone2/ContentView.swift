@@ -1,5 +1,11 @@
 import SwiftUI
 
+struct CustomColor {
+    static let brightRed = Color("brightRed")
+    static let darkBrown = Color("darkBrown")
+    static let lime = Color("lime")
+}
+
 struct ContentView: View {
     @State private var selectedMeasurement = 0
     @State private var selectedUnit = 0
@@ -42,7 +48,7 @@ struct ContentView: View {
         NavigationView {
             ZStack{
                 Rectangle()
-                            .fill(Gradient(colors: [.indigo, .purple]))
+                    .fill(Gradient(colors: [CustomColor.brightRed, CustomColor.darkBrown, CustomColor.lime]))
                             .ignoresSafeArea()
 
 
@@ -103,7 +109,6 @@ struct ContentView: View {
                             
                     }
                     .padding(.vertical)
-                    .border(.red, width: borderThickness)
                     .rotationEffect(.degrees(angle))
                     .animation(.easeInOut, value: angle)
                 }
