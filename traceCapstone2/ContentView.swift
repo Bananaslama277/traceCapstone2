@@ -102,15 +102,21 @@ struct ContentView: View {
                         .font(.headline)
                         .fontWeight(.heavy)
                     
+                        
                     Button(action: {
                         angle += 360
                         borderThickness += 1
                     }) { Image ("Image")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            
                             
                     }
-                    .frame(width: 128.0, height: 128.8)
+                    .frame(maxWidth: UIScreen.main.bounds.width,
+                    maxHeight: UIScreen.main.bounds.height)
                     .rotationEffect(.degrees(angle))
                     .animation(.linear, value: angle)
+
                 }
             }
             
