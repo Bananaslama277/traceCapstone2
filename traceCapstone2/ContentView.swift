@@ -60,7 +60,6 @@ struct ContentView: View {
                         .foregroundColor(CustomColor.lime)
                         .multilineTextAlignment(.center)
                         .padding(.top)
-                    
                     Form {
                         
                         
@@ -68,9 +67,12 @@ struct ContentView: View {
                             Picker("Measurement", selection: $selectedMeasurement) {
                                 ForEach(0 ..< measurements.count) {
                                     Text(self.measurements[$0])
+
                                 }
                             }
+
                             .pickerStyle(SegmentedPickerStyle())
+
                         }                            .foregroundColor(CustomColor.lime)
 
                         
@@ -102,11 +104,11 @@ struct ContentView: View {
                                 .fontWeight(.semibold)
                         }
                         
-                    }   .scrollContentBackground(.hidden)
-                        .font(.headline)
-                        .fontWeight(.heavy)
+                    }.scrollContentBackground(.hidden)
+                    .font(.headline)
+                    .fontWeight(.heavy)
                     
-                        
+                    // Face spins when tapped
                     Button(action: {
                         angle += 360
                         borderThickness += 1
