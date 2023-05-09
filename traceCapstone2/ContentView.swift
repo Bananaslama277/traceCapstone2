@@ -16,6 +16,8 @@ struct ContentView: View {
     @State private var angle = 0.0
     @State private var borderThickness = 1.0
     
+    @State var deathSpinCount = 0
+    @State var faceImage = ["Image", "Blood"]
     var convertedMeasurement: Double {
         let quantity = Double(quantityString) ?? 0.0
         var convertedValue: Double = 0.0
@@ -108,10 +110,15 @@ struct ContentView: View {
                     .font(.headline)
                     .fontWeight(.heavy)
                     
-                    // Face spins when tapped
+                    // Face spins when tapped, dies after {10}
                     Button(action: {
                         angle += 360
                         borderThickness += 1
+                        deathSpinCount += 1
+                        if (deathSpinCount > 10) {
+                            
+                        }
+                        
                     }) { Image ("Image")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
