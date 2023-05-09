@@ -57,7 +57,7 @@ struct ContentView: View {
 
                 VStack{
                     
-                    Text("Super Cool Awesome Measurement Converter")
+                    Text("Super Cool Awesome Measurement  Converter")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(CustomColor.lime)
@@ -96,18 +96,20 @@ struct ContentView: View {
                                 Picker("Unit", selection: $selectedUnit) {
                                     ForEach(0 ..< units.count) {
                                         Text(self.units[$0])
+                                            .padding()
                                     }
 
                                 }.pickerStyle(SegmentedPickerStyle())
                                 
                             }.foregroundColor(CustomColor.brightRed)
                                 .fontWeight(.semibold)
-                        }
+                            }
                         
                     }.scrollContentBackground(.hidden)
                     .font(.headline)
                     .fontWeight(.heavy)
-                   
+                    
+                    
                     // Face spins when tapped, dies after 10
                     Button(action: {
                         angle += 360
@@ -120,14 +122,14 @@ struct ContentView: View {
                     }) { Image (faceImage[faceImageArray])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .padding()
                     }
-                    .padding()
+                    .padding(.top)
                     .frame(maxWidth: UIScreen.main.bounds.width,
                     maxHeight: UIScreen.main.bounds.height)
                     .rotationEffect(.degrees(angle))
                     .animation(.easeOut, value: angle)
 
+                    //Revives face when tapped
                     Button(action: {
                         faceImageArray = 0
                         deathSpinCount = 0
