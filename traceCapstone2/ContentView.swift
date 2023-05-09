@@ -17,7 +17,8 @@ struct ContentView: View {
     @State private var borderThickness = 1.0
     
     @State var deathSpinCount = 0
-    @State var faceImage = ["Image", "Blood"]
+    @State var faceImageArray = 0
+    @State var faceImage = ["Image", "blood"]
     var convertedMeasurement: Double {
         let quantity = Double(quantityString) ?? 0.0
         var convertedValue: Double = 0.0
@@ -115,11 +116,11 @@ struct ContentView: View {
                         angle += 360
                         borderThickness += 1
                         deathSpinCount += 1
-                        if (deathSpinCount > 10) {
-                            
+                        if (deathSpinCount >= 10) {
+                            faceImageArray = 1
                         }
                         
-                    }) { Image ("Image")
+                    }) { Image (faceImage[faceImageArray])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             
