@@ -7,7 +7,7 @@ struct CustomColor {
 }
 
 struct ContentView: View {
-    @State private var selectedMeasurement = 0
+        @State private var selectedMeasurement = 0
     @State private var selectedUnit = 0
     @State private var quantityString = ""
     let measurements = ["Feet", "Inches", "Miles", "Yards"]
@@ -121,8 +121,12 @@ struct ContentView: View {
                     .frame(maxWidth: UIScreen.main.bounds.width,
                     maxHeight: UIScreen.main.bounds.height)
                     .rotationEffect(.degrees(angle))
-                    .animation(.linear, value: angle)
+                    .animation(.easeOut, value: angle)
 
+                    Text("The sun smiles at you with eternal malice")
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color("brightRed"))
+                        .multilineTextAlignment(.center)
                 }
             }
             
