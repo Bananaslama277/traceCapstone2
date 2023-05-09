@@ -98,10 +98,7 @@ struct ContentView: View {
                                         Text(self.units[$0])
                                     }
 
-                                    
-                                    
                                 }.pickerStyle(SegmentedPickerStyle())
-                                
                                 
                             }.foregroundColor(CustomColor.brightRed)
                                 .fontWeight(.semibold)
@@ -110,8 +107,8 @@ struct ContentView: View {
                     }.scrollContentBackground(.hidden)
                     .font(.headline)
                     .fontWeight(.heavy)
-                    
-                    // Face spins when tapped, dies after {10}
+                   
+                    // Face spins when tapped, dies after 10
                     Button(action: {
                         angle += 360
                         borderThickness += 1
@@ -126,15 +123,22 @@ struct ContentView: View {
                             
                             
                     }
+                    .padding()
                     .frame(maxWidth: UIScreen.main.bounds.width,
                     maxHeight: UIScreen.main.bounds.height)
                     .rotationEffect(.degrees(angle))
                     .animation(.easeOut, value: angle)
 
-                    Text("The sun smiles at you with eternal malice")
-                        .fontWeight(.semibold)
-                        .foregroundColor(Color("brightRed"))
-                        .multilineTextAlignment(.center)
+                    Button(action: {
+                        faceImageArray = 0
+                        deathSpinCount = 0
+                    }) { Text ("The sun smiles at you with eternal malice.")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color("brightRed"))
+                            .multilineTextAlignment(.center)
+
+                    }
+                    .padding(.top)
                 }
             }
             
