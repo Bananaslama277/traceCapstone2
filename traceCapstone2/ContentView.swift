@@ -120,8 +120,7 @@ struct ContentView: View {
                     }) { Image (faceImage[faceImageArray])
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            
-                            
+                            .padding()
                     }
                     .padding()
                     .frame(maxWidth: UIScreen.main.bounds.width,
