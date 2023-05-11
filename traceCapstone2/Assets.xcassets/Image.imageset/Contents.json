@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "moreMalice.png",
+      "filename" : "faceofmalice.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "moreMalice 1.png",
+      "filename" : "faceofmalice 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "moreMalice 2.png",
+      "filename" : "faceofmalice 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

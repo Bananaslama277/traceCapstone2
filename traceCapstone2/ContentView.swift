@@ -57,7 +57,7 @@ struct ContentView: View {
 
                 VStack{
                     
-                    Text("Super Cool Awesome Measurement  Converter")
+                    Text("Super Cool Awesome Measurement Converter")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(CustomColor.lime)
@@ -109,37 +109,37 @@ struct ContentView: View {
                     .font(.headline)
                     .fontWeight(.heavy)
                     
-                    
-                    // Face spins when tapped, dies after 10
-                    Button(action: {
-                        angle += 360
-                        borderThickness += 1
-                        deathSpinCount += 1
-                        if (deathSpinCount >= 10) {
-                            faceImageArray = 1
+                    VStack{
+                        // Face spins when tapped, dies after 10
+                        Button(action: {
+                            angle += 360
+                            borderThickness += 1
+                            deathSpinCount += 1
+                            if (deathSpinCount >= 10) {
+                                faceImageArray = 1
+                            }
+                            
+                        }) { Image (faceImage[faceImageArray])
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                         }
+                        .padding(.top)
+                        .frame(maxWidth: UIScreen.main.bounds.width,
+                               maxHeight: UIScreen.main.bounds.height)
+                        .rotationEffect(.degrees(angle))
+                        .animation(.easeOut, value: angle)
                         
-                    }) { Image (faceImage[faceImageArray])
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                        //Revives face when tapped
+                        Button(action: {
+                            faceImageArray = 0
+                            deathSpinCount = 0
+                        }) { Text ("The sun smiles at you with eternal malice.")
+                                .fontWeight(.bold)
+                                .foregroundColor(Color("brightRed"))
+                                .multilineTextAlignment(.center)
+                            
+                        }
                     }
-                    .padding(.top)
-                    .frame(maxWidth: UIScreen.main.bounds.width,
-                    maxHeight: UIScreen.main.bounds.height)
-                    .rotationEffect(.degrees(angle))
-                    .animation(.easeOut, value: angle)
-
-                    //Revives face when tapped
-                    Button(action: {
-                        faceImageArray = 0
-                        deathSpinCount = 0
-                    }) { Text ("The sun smiles at you with eternal malice.")
-                            .fontWeight(.bold)
-                            .foregroundColor(Color("brightRed"))
-                            .multilineTextAlignment(.center)
-
-                    }
-                    .padding(.top)
                 }
             }
             
