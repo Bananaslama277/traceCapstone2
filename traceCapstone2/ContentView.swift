@@ -54,7 +54,6 @@ struct ContentView: View {
                     .fill(Gradient(colors: [CustomColor.brightRed, CustomColor.darkBrown, CustomColor.lime]))
                         .ignoresSafeArea()
 
-
                 VStack{
                     
                     Text("Super Cool Awesome Measurement Converter")
@@ -123,7 +122,7 @@ struct ContentView: View {
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                         }
-                        .padding(.top)
+                        .padding(.vertical)
                         .frame(maxWidth: UIScreen.main.bounds.width,
                                maxHeight: UIScreen.main.bounds.height)
                         .rotationEffect(.degrees(angle))
@@ -142,9 +141,7 @@ struct ContentView: View {
                     }
                 }
             }
-            
         }
-        
     }
 }
 
