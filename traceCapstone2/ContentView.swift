@@ -14,6 +14,7 @@ struct ContentView: View {
     let measurements = ["Feet", "Inches", "Miles", "Yards"]
     let units = ["Meters", "Centimeters", "Kilometers"]
     
+    //For rotation effect
     @State private var angle = 0.0
     @State private var borderThickness = 1.0
     
