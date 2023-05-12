@@ -1,9 +1,10 @@
 import SwiftUI
-
+//Creates ugly custom colors
 struct CustomColor {
     static let brightRed = Color("brightRed")
     static let darkBrown = Color("darkBrown")
     static let lime = Color("lime")
+    static let magenta1 = Color("magenta1")
 }
 
 struct ContentView: View {
@@ -50,8 +51,10 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack{
+                
+                //Unpleasant gradient
                 Rectangle()
-                    .fill(Gradient(colors: [CustomColor.brightRed, CustomColor.darkBrown, CustomColor.lime]))
+                    .fill(Gradient(colors: [CustomColor.brightRed, CustomColor.darkBrown, CustomColor.magenta1, CustomColor.lime]))
                         .ignoresSafeArea()
 
                 VStack{
@@ -109,6 +112,7 @@ struct ContentView: View {
                     .fontWeight(.heavy)
                     
                     VStack{
+                        
                         // Face spins when tapped, dies after 10
                         Button(action: {
                             angle += 360
@@ -126,7 +130,7 @@ struct ContentView: View {
                         .frame(maxWidth: UIScreen.main.bounds.width,
                                maxHeight: UIScreen.main.bounds.height)
                         .rotationEffect(.degrees(angle))
-                        .animation(.easeOut, value: angle)
+                        .animation(.default, value: angle)
                         
                         //Revives face when tapped
                         Button(action: {
